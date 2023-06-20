@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+  <style>
+    /* .main {
+
+    } */
+    body {
+            background-color: rgb(221, 224, 224);
+        }
+        .head {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-right: 5px;
+          padding: 5px 10px;
+        }
+        .container1{
+          background-color: white;
+          margin: 10px;
+          width: 70%;
+        }
+        .container2 {
+          background-color: white;
+          margin: 10px;
+          width: 27%;
+        }
+        .submain{
+            display: flex;
+        }
+    .cart-item {
+      display: flex;
+      margin-bottom: 10px;
+      padding: 20px;
+    }
+    .cart-thumbnail {
+      flex: 0 0 100px;
+      margin-right: 10px;
+      width: 100px;
+      height:130px;
+    }
+    .cart-title {
+      font-weight: bold;
+      font-size: 20px;
+      color: rgb(18, 81, 143);
+      padding: 10px;
+    }
+    .cart-description {
+      padding: 10px;
+      color: gray;
+    }
+    .cart-price {
+      font-size: 18px;
+    }
+    .cart-quantity {
+      font-size: 16px;
+      width: 35px;
+      height: 35px;
+      text-align: center;
+      margin-top: 30px;
+      margin-left: 15px;
+    }
+    .cart-details {
+      margin-top: 20px;
+     display: grid;
+     grid-template-columns: repeat(5, 1fr);
+    /* text-align: center; */
+}
+#totalPrice{
+  float: right;
+  margin-right: 100px;
+    padding-right: 80px;
+}
+#text {
+  font-weight: bold;
+  color: grey;
+}
+/* .search{
+  float: right;
+  margin: -60px 0px;
+  padding: 0px 2px;
+} */
+/* .search {
+    float: right; 
+     margin: -50px 140px;
+    padding: 0px 130px;
+} */
+/* .search-icon {
+            float: right;
+            padding: 12px 40px;
+             margin: 20px 15px 15px 1px;
+            font-size: 20px;
+            cursor: pointer;
+        } */
+        .search-icon {
+    /* float: right; */
+    /* padding: 6px 100px;
+    margin: 17px 20px 13px 1px; */
+    font-size: 20px;
+    cursor: pointer;
+}
+.subhead {
+    width: 60%;
+    padding: 10px 10px 10px 200px;
+    margin: 10px 32px 21px 297px;
+    align-items: center;
+    text-align: center;
+}
+        .search-bar {
+             display: none;
+             /* float: right; */
+             /* padding: 4px 5px;
+             margin: 13px 5px; */
+             font-size: 20px;
+        }
+        .search-bar.active {
+            display: block;
+        }
+        .p1 {
+            display: flex;
+            justify-content: space-evenly;
+            padding-top: 50px;
+            margin: 10px;
+        }
+        .p2 {
+            display: flex;
+            justify-content: space-evenly;
+            padding: 10px;
+            margin: 5px;
+        }
+        h4{
+            padding:20px ;
+            margin: 10px;
+        }
+        .checkout-button {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-top: 20px;
+      
+		  }
+		  .checkout-button i {
+			margin-right: 10px;
+		  }
+		  .checkout-button button {
+			padding: 10px;
+			background-color: blue;
+			color: white;
+      border: none;
+      cursor: pointer;
+		  }
+      
+.cart-details button {
+    height: 30px;
+    /* width: 30px; */
+    border-radius: 10px;
+    background-color: #d9b0be;
+    color: white;
+    margin-top: 10px;
+}
+.cart-details button:hover {
+    height: 30px;
+    /* width: 30px; */
+    border-radius: 10px;
+    background-color: #d8d4d5;
+    color: black;
+    margin-top: 10px;
+}
+.container2 h3 {
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  background-color: rgb(136, 185, 185);
+  color: cornsilk;
+}
+#SubTotal{
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+#totalPrice{
+  font-weight: bold;
+}
+#noRecordsFound {
+  display: none;
+  text-align: center;
+  font-size: 15px;
+  color: rgb(209, 72, 72);
+  padding: 10px;
+  margin: 10px;
+  width: 60%;
+  height: 300px;
+  background-color: white;
+  margin-left: 300px;
+}
+#noRecordsFound h2{
+  padding: 10px;
+margin:10px;
+margin-top: 80px;
+    padding-top: 40px;
+}
+
+  </style>
+</head>
+<body>
+<section class="head">
+  <h1>Shopping Cart</h1>
+  <div class="checkout-button" id="btn">
+    <a href="/"><button style="background-color: blueviolet;">Goto backPage</button></a>
+</div>
+</section>
+<section class="subhead">
+<div class="search">
+  <i class="fas fa-search search-icon"></i>
+  <input type="text" class="search-bar" placeholder="Search product by name">
+</div>
+</section>
+<section class="noRecordsFound">
+    <div>
+      <div id="noRecordsFound"><h2>No Records Found.....!</h2></div>
+    </div>
+  </section>
+  <div class="main" id="main">
+   <div class="submain">
+    <div class="container1">
+  <div id="cartItems">
+  </div>
+  <hr>
+  <div id="footer">
+  <div id="totalPrice">Total Price: $0</div>
+  <div id="text">YOUR SAVED PRODUCTS</div></div>
+  </div>
+  <div class="container2">
+    <div><h3>SubTotal Details</h3></div>
+    <div class="p1">
+        <p>Shipping</p>  
+        <p>Calculate Below.</p>
+    </div>
+    <div class="p2">
+        <p>Sales Tax</p>  
+        <p>Calculate Below.</p>
+    </div>
+    <br/>
+    <hr>
+    <div>
+        <!-- <h4 id="Price">Total: $0</h4> -->
+        <div id="SubTotal">SubTotal: $0</div>
+    </div> 
+    <div class="checkout-button">
+      <a href="finalpage.html"><button><i class="fas fa-lock"></i>Begin Checkout</button></a>
+  </div>
+</div>
+</div>
+
+  <script>
+   window.addEventListener('DOMContentLoaded', function() {
+  const cartItemsContainer = document.getElementById('cartItems');
+  const totalPriceElement = document.getElementById('totalPrice');
+  const subTotalElemen = document.getElementById('SubTotal');
+  const priceElement= document.getElementById('cart-price');
+  const noRecordsFound = document.getElementById('noRecordsFound');
+  const searchIcon = document.querySelector('.search-icon');
+  const searchBar = document.querySelector('.search-bar');
+  const footerSec = document.querySelector('.footer');
+  const mainSection = document.querySelector('.main');
+  
+  
+
+  searchIcon.addEventListener('click', function() {
+    searchIcon.style.display = 'none';
+    searchBar.classList.add('active');
+    searchBar.focus();
+  });
+
+  searchBar.addEventListener('input', function(event) {
+    const searchTerm = event.target.value.trim();
+    performSearch(searchTerm);
+  });
+
+  searchBar.addEventListener('blur', function() {
+  searchIcon.style.display = 'block';
+  searchBar.classList.remove('active');
+  searchBar.value = '';
+});
+
+  let cart = [];
+  const storedCart = sessionStorage.getItem('cart');
+  if (storedCart) {
+    cart = JSON.parse(storedCart);
+  }
+  displayCartItems(cart);
+ 
+  function performSearch(searchTerm) {
+    const filteredItems = cart.filter(item =>
+    item.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    displayCartItems(filteredItems);
+    if (searchTerm === '') {
+    mainSection.style.display = 'block';
+    }
+    }
+    function displayCartItems(items) {
+    cartItemsContainer.innerHTML = '';
+
+  if (items.length > 0) {
+     noRecordsFound.style.display = 'none';
+     mainSection.style.display = 'block';
+     items.forEach(item => {
+     const cartItem = createCartItem(item);
+     cartItemsContainer.appendChild(cartItem);
+      
+    });
+
+    updateTotalPrice();
+    updatesubTotal();
+    updatePrice();
+    mainSection.style.display = 'block';
+   } 
+  else {
+       //  and show "No Records Found" message
+       noRecordsFound.style.display = 'block';
+       mainSection.style.display = 'none';
+       }
+       }
+       function createCartItem(item) {
+        // Create container div for the cart item
+        const cartItemContainer = document.createElement('div');
+        cartItemContainer.classList.add('cart-item');
+
+        // Create thumbnail element
+        const thumbnail = document.createElement('img');
+        thumbnail.src = item.thumbnail;
+        thumbnail.classList.add('cart-thumbnail');
+        cartItemContainer.appendChild(thumbnail);
+
+        // Create details container for title, price, and quantity
+        const detailsContainer = document.createElement('div');
+        detailsContainer.classList.add('cart-details');
+        cartItemContainer.appendChild(detailsContainer);
+
+        // Create title element
+        const title = document.createElement('h2');
+        title.classList.add('cart-title');
+        title.textContent = item.title;
+        detailsContainer.appendChild(title);
+
+        // Create description element
+        const description = document.createElement('p');
+        description.classList.add('cart-description');
+        description.textContent = item.description;
+        detailsContainer.appendChild(description);
+
+        // Create quantity input
+        const quantity = document.createElement('input');
+        quantity.classList.add('cart-quantity');
+        quantity.type = 'number';
+        quantity.min = '0'; // Set minimum value to 0
+        quantity.value = item.quantity;
+        quantity.addEventListener('input', function() {
+          updateCartItemQuantity(item, parseInt(quantity.value));
+        });
+        detailsContainer.appendChild(quantity);
+
+        // Create price element 
+
+        const price = document.createElement('p');
+        price.classList.add('cart-price');
+        price.textContent = 'Price: $' + (item.price * item.quantity).toFixed(2);
+        detailsContainer.appendChild(price);
+
+
+        // Create delete button
+       const deleteButton = document.createElement('button');
+       deleteButton.textContent = 'Delete';
+       deleteButton.addEventListener('click', function() {
+       removeCartItem(item);
+  });
+  detailsContainer.appendChild(deleteButton);
+  return cartItemContainer;
+  }
+ 
+  function updateCartItemQuantity(item, newQuantity) {
+        // Update the quantity of the item
+        item.quantity = newQuantity;
+        // Calculate the new price
+         const newPrice = item.price * newQuantity;
+         displayCartItems(cart);
+        // Save the updated cart to sessionStorage
+        saveCartTosessionStorage();
+       // Calculate and display the total price
+        updateTotalPrice();
+        updatesubTotal();
+        updatePrice();
+      }
+
+      function removeCartItem(item) {
+        // Find the item index in the cart array
+        const cartIndex = cart.findIndex(cartItem => cartItem.title === item.title);
+
+       if (cartIndex !== -1) {
+           // Prompt the user to confirm deletion
+       const confirmation = confirm("Are you sure you want to delete this product from the cart?");
+
+       if (confirmation) {
+        // Remove the item from the cart array
+       cart.splice(cartIndex, 1);
+       // Save the updated cart to sessionStorage
+       saveCartTosessionStorage();   
+       displayCartItems(cart);
+       updateTotalPrice();
+       updatesubTotal();
+       updatePrice();
+       }
+       }
+       }
+      function updateTotalPrice() {
+        let totalPrice = 0;
+
+        // Calculate the total price by iterating over the cart items
+        cart.forEach(item => {
+          totalPrice += item.price * item.quantity;
+        });
+
+        totalPriceElement.textContent = 'Total Price: $' + totalPrice.toFixed(2);
+      }
+
+      function updatesubTotal() {
+        let subTotal = 0;
+
+        // Calculate the total price by iterating over the cart items
+        cart.forEach(item => {
+          subTotal += item.price * item.quantity;
+        });
+
+        subTotalElemen.textContent = 'SubTotal: $' + subTotal.toFixed(2);
+
+      }
+
+      function saveCartTosessionStorage() {
+        sessionStorage.setItem('cart', JSON.stringify(cart));
+      }
+      function resetCartPage() {
+  // Clear local storage if using it to store cart data
+  sessionStorage.removeItem('cart');
+  
+  // Redirect to the cart.html page
+  window.location.href = 'cart.html';
+}     
+    });
+
+// Replace the current page history entry with index.html
+history.replaceState(null, null, 'index.html');
+
+// Listen for the 'popstate' event (triggered when the back button is clicked)
+window.addEventListener('popstate', function(event) {
+// Replace the current page with index.html
+location.replace('index.html');
+});
+  </script>
+</body>
+</html>

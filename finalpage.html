@@ -1,0 +1,761 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>orderConfirmationPage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+</head>
+<style>
+    body {
+    background-color: rgb(221, 224, 224);
+    margin-left: 50px;
+    scroll-behavior: smooth;
+}
+    .main{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+.main{
+     flex-direction: column;
+  }
+  ul{
+    display: flex;
+    margin-top: 10px;
+  }
+  ul li {
+   list-style: none;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   margin: 60px 112px;
+  }
+  ul li .text{
+    font-size: 20px;
+    font-weight: bold;
+
+  }
+  ul li progress {
+    margin: 18px 0px;
+  }
+  ul li .progress i{
+    display: none;
+  }
+  ul li .progress{
+    width: 50px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #c7d1d1;
+    display: grid;
+    margin: 12px 0;
+    place-items: center;
+    color: cornsilk;
+    position: relative;
+  }
+  .progress:after{
+    position: absolute;
+    content: " ";
+    width: 262px;
+    height: 10px;
+    background-color: #c7d1d1;
+    top: 13px;
+    right: 95%;
+  }
+  .one::after{
+    width: 0;
+    height: 0;
+  }
+  ul li .active {
+    background-color: rgb(56, 143, 143);
+  }
+  li .active::after{
+    background-color: rgb(56, 143, 143);
+  }
+  ul li .active P{
+    display: none;
+  }
+  ul li .active i {
+    display: flex;
+  }
+
+ .container {
+    width: 80%;
+    background-color: white; 
+    margin: 14px 10px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    padding-top: 40px; 
+    margin-left: 60px;
+}
+ .container2 {
+    background-color: white;
+    width: 50%;
+    margin: 10px 10px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    padding-top: 40px; 
+    margin-left: 60px;
+} 
+    .submain {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: white;
+    }
+    .input-box {
+    display: flex;
+    flex-wrap: wrap;
+    width: 40%;
+    margin: 10px;
+    padding: 10px;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+   
+    .input-box label {    
+    margin-top: 6px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    margin-left: 60px;
+    margin-right: 10px;
+    }
+    p{
+        font-size: 16px;
+    }
+    .dropdown-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  select {
+    min-width: 1ch;
+    max-width: 30ch;
+    border: 1px solid var(--select-border);
+    border-radius: 0.25em;
+    cursor: pointer;
+    background-color: #fff;
+    background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  }
+  .btn{
+    text-align: center;
+    background-color: #38697b;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    border: none;
+    color: cornsilk;
+    cursor: pointer;
+  }
+  .num.active::after {
+  background-color: #38697b;
+}
+.footer{
+display: flex;
+justify-content: space-evenly;
+width: 80%;
+
+}
+.container3{
+    width: 40%;
+    /* background-color: white;  */
+    border-radius: 5px;
+}
+.credit-card {
+    width: 410px;
+    height: 400px;
+    margin: 10px auto 0;
+    border: 1px solid #9c9fa1;
+    border-radius: 6px;
+    background-color: #fff;
+}
+.form-header {
+    height: 60px;
+    padding: 20px 30px 0;
+    border-bottom: 1px solid #9c9fa1;
+    text-align: center;
+}
+ 
+.form-body {
+    height: 340px;
+    padding: 30px 30px 20px;
+}
+
+.title {
+    font-size: 25px;
+    margin: 0;
+    color: #565a61;
+}
+
+.card-number,
+.cvv-input input,
+.month select,
+.year select {
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 14px;
+}
+ 
+.card-number,
+.month select,
+.year select {
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 14px;
+}
+.card-number,
+.cvv-details,
+.cvv-input input,
+.month select,
+.year select {
+    opacity: .7;
+    color: #86939e;
+}
+.card-number {
+    width: 100%;
+    margin-bottom: 30px;
+    padding-left: 7px;
+    border: 2px solid #86939e;
+    border-radius: 3px;
+    padding: 8px;
+}
+.month select,
+.year select {
+    width: 150px;
+    margin-bottom: 30px;
+    padding-left: 10px;
+    border: 2px solid #86939e;
+    border-radius: 3px;
+    padding: 8px;
+}
+ 
+.month select {
+    float: left;
+}
+ 
+.year select {
+    float: right;
+}
+.cvv-input input {
+    float: left;
+    width: 135px;
+    padding-left: 14px;
+    border: 2px solid #86939e;
+    border-radius: 3px;
+    padding: 8px;
+}
+    
+ 
+.cvv-details {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 16px;
+    float: right;
+    margin-bottom: 20px;
+}
+ 
+.cvv-details p {
+    margin-top: 6px;
+}
+.proceed-btn {
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 3px;
+    padding: 10px 2px;
+    border: none;
+}
+ 
+.proceed-btn {
+    background: #7dc855;
+}
+ 
+.proceed-btn a {
+    text-decoration: none;
+}
+ 
+.proceed-btn a {
+    color: #fff;
+}
+.payment h3{
+  font-size: 25px;
+}
+input[type=radio] {
+border: 0px;
+width: 15%;
+height: 2em;
+}
+.payment p {
+  font-size: 25px;
+  padding: 10px;
+  text-align: center;
+}
+.footer{
+  width: 80%;
+    background-color: white; 
+    margin: 14px 10px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    padding-top: 40px;
+    margin-left: 60px; 
+}
+.order {
+  width: 50%;
+    background-color: white; 
+    margin: 14px 10px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    padding-top: 40px; 
+}
+.page1{
+  display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.page2{
+  display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.previouspage {
+  width: 25%;
+    background-color: white; 
+    margin: 14px 10px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    padding-top: 40px; 
+}
+.checking {
+  display: flex;
+  /* justify-content: space-around; */
+  align-items: center;
+  margin-left: 60px;
+}
+.checkout-button button {
+			padding: 10px;
+			background-color: rgb(71, 152, 158);
+			color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      border:none ;
+		  }
+.checkout-button{
+  margin: 5px 60px;
+  margin-bottom: 10px;
+}
+ #orderConfirmationSection{
+  display: none;
+  width: 450px;
+  height: 280px;
+  text-align: center;
+  background-color: #fff;
+  color: #326915;
+  margin: 16% 33%;
+}
+.checkmark{
+margin-left: 195px;
+    border: 2px solid green;
+    width: 40px;
+    height: 40px;
+    border-radius: 26px;
+    align-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.checkmark i {
+  padding: 10px;
+}
+a#payment-button{
+
+float: right;
+    padding: 10px;
+    margin: 26px;
+}
+
+#backbutton {
+    padding: 10px;
+    background-color: rgb(71, 152, 158);
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+}
+
+</style>
+<body>
+ <div class="orderConfirmationSection" id="orderConfirmationSection">
+  <hr>
+  <hr>
+  <h3>Congratulations your order placed successfully.</h3>
+  <p>Shipping details will share as soon as.</p>
+  <hr>
+  <div class="checkmark"> <i class=" fa-solid fa-check"></i></div>
+  <div>
+    <a href="index.html"><button id="backbutton" onclick="resetCartPage()"><i class="fa-solid fa-arrow-left"></i>Goto Shopping</button></a></div>
+ </div>
+  <div class="checkingPage" id="totalCheckingPage"> 
+   <div class="head" id="head">
+    <div class="main" id="main">
+        <ul>
+          <li>
+          <div class="active progress one">
+          <p>1</p>
+          <i class=" fa-solid fa-check"></i>
+        </div>
+        <p class="text">add to cart</p>
+        </li>
+        <li>
+          <div class=" progress two">
+          <p>2</p>
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <p class="text">address</p>
+        </li>
+        <li>
+          <div class="progress three">
+          <p>3</p>
+          <i class=" fa-solid fa-check"></i>
+        </div>
+        <p class="text">payment</p>
+        </li>
+        <li>
+          <div class="progress four">
+          <p>4</p>
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <p class="text">place order</p>
+        </li>
+      </ul>
+      </div>
+            <!--form section-->
+            <div><h3>ADDRESS DETAILS</h3></div>
+            <div class="container" id="container">
+            <form id="address" class="address">
+                <div class="submain">
+                <div class="input-box">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" required><br/><br/>
+                </div>
+                <div class="input-box">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" required><br/><br/>
+                  </div>
+                  
+                  <div class="input-box">
+                <label for="name-input">Mobile No.</label>
+                <input type="number" id="name-input" maxlength="10" required><br/><br/>
+                </div>
+                <div class="input-box">
+                <label for="name-input-alt">Alternate No.</label><br/><br/>
+                <input type="number" id="name-input-alt" maxlength="10" required><br/><br/></div>
+
+                <div class="input-box">
+                <label for="name-input-pin">Pincode</label>
+                <input type="number" id="name-input-pin" maxlength="6" required></div>
+                <div class="input-box">
+                <label for="suggestions">Address:</label>
+                <textarea name="suggestions" placeholder="Flatno/Town/City/District" id="suggestions"></textarea></div>
+            
+                <div class="input-box">
+                    <label class="dropdown-group">
+                        State:<select id="Country" size="1">
+                        <option value="" selected="selected">-- Select State --</option>
+                        </select></label></div>
+                        <div class="input-box">
+                            <label class="dropdown-group">
+                                District:<select id="State" size="1">
+                            <option value="" selected="selected">-- Select District --</option>
+                          </select>
+                        </label>
+                
+                    </div>
+                    </div>
+                    <div id="btn1" style="text-align: center;">
+                    <a href=" "><button class="btn" type="submit" form="address" id="confirmButton">Confirm</button></a>
+                    </div>
+            </form>
+        </div>
+   </div> 
+   <div><h3>PAYMENT DETAILS</h3>
+   
+
+   <div class="footer">
+
+    <div class="container2">
+      <form class="payment" id="payment" >
+        <h3>Choose an option for Payment:</h3>
+    
+        <!-- PayPal payment option -->
+        <label for="Paypal">
+          <input type="radio" id="Paypal" name="onlinePay" value="Paypal" class="paymentOption">
+          <span style="font-size: 20px; margin-right: 10px;">PayPal</span>
+          <i class="fa-brands fa-paypal" style="font-size: 24px;"></i>
+        </label>
+        <br/>
+        
+    
+        <!-- GooglePay payment option -->
+        <label for="GooglePay">
+          <input type="radio" id="GooglePay" name="onlinePay" value="GooglePay" class="paymentOption">
+          <span style="font-size: 20px; margin-right: 10px;">GooglePay</span>
+          <i class="fa-brands fa-google-pay" style="font-size: 24px;"></i>
+        </label>
+        <br>
+        
+    
+        <!-- AmazonPay payment option -->
+        <label for="AmazonPay">
+          <input type="radio" id="AmazonPay" name="onlinePay" value="AmazonPay" class="paymentOption">
+          <span style="font-size: 20px; margin-right: 10px;">AmazonPay</span>
+          <i class="fa-brands fa-amazon-pay" style="font-size: 24px;"></i>
+        </label>
+        <br>
+    
+        <!-- Cash on delivery payment option -->
+        <label for="Cash">
+          <input type="radio" id="Cash" name="onlinePay" value="Cash" class="paymentOption">
+          <span style="font-size: 20px; margin-right: 10px;">Cash on delivery</span>
+          <i class="fa-solid fa-wallet" style="font-size: 24px;"></i>
+        </label>
+    
+        <div class="payment">
+          <p style="font-size: 20px;">Delivery Charges: <b style="color: green;">FREE</b></p>
+        </div>
+      </form>
+      <a href="#head" id="payment-button"><button class="btn" type="submit" form="address" id="confirmButton">Confirm</button></a>
+    </div>
+
+  <div class="container3">
+    <form class="credit-card">
+        <div class="form-header">
+          <h4 class="title">Credit card detail</h4>
+        </div>
+       
+        <div class="form-body">
+         
+          <input type="text" class="card-number" placeholder="Credit Card Number">
+     
+     <div class="date-field">
+      <div class="month">
+        <select name="Month">
+          <option value="january">January</option>
+          <option value="february">February</option>
+          <option value="march">March</option>
+          <option value="april">April</option>
+          <option value="may">May</option>
+          <option value="june">June</option>
+          <option value="july">July</option>
+          <option value="august">August</option>
+          <option value="september">September</option>
+          <option value="october">October</option>
+          <option value="november">November</option>
+          <option value="december">December</option>
+        </select>
+      </div>
+      <div class="year">
+        <select name="Year">
+          <option value="2016">2016</option>
+          <option value="2017">2017</option>
+          <option value="2018">2018</option>
+          <option value="2019">2019</option>
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+          <option value="2022">2022</option>
+          <option value="2023">2023</option>
+          <option value="2024">2024</option>
+        </select>
+      </div>
+    </div>
+     
+     <div class="card-verification">
+      <div class="cvv-input">
+        <input type="text" placeholder="CVV">
+      </div>
+      <div class="cvv-details">
+        <p> Enter 3 digits cvv number found <br> on back side of your card. </p>
+      </div>
+    <div>
+    <button class="proceed-btn"><a href="#">Proceed To Pay</a></button>
+    </div>
+    
+    </form>
+    
+  </div>
+</div>
+<!-- <a href="#head" id="payment-button"><button class="btn" type="submit" form="address">Confirm</button></a> -->
+</div>
+
+</div>
+</div>
+
+<h3>ORDER CONFIRMATION PAGE </h3>
+<div class="checking">
+  <div class="order" id="order">
+    <div class="page1">
+   <p>If you click on the confirm then your order details will be taken as confirmed. </p> 
+  <a href="#container" id="order-button"><button class="btn" type="submit" form="address">Confirm</button></a>
+</div>
+<div class="page2">
+<p>Click on Place order to Place your order.</p> 
+<a href="#" id="placeOrderButton"><button class="btn" onclick="refreshCartPage()">Place Order</button></a>
+</div>
+</div>
+  
+ 
+    <div class="previouspage">
+      <div class="checkout-button">
+        <a href="index.html"><button><i class="fa-solid fa-arrow-left"></i>Goto Shopping</button></a>
+    </div>
+    <div class="checkout-button">
+      <a href="cart.html"><button><i class="fa-solid fa-arrow-left"></i>Goto CartPage</button></a>
+  </div>
+    </div>
+</div>
+</div>  
+  
+   <script>
+    const countrySelect = document.getElementById("Country");
+    const stateSelect = document.getElementById("State");
+    const countryStateData = {
+      Telangana: ["Hyderabad", "Karimnagar", "Nirmal", "Nizamabad"],
+      AndhraPradesh: ["Anantapuram", "Visakhapatnam", "Tirupati", "Vizianagaram"],
+      Uttarakhand: ["Almora", "Bageshwar", "Chamoli", "Champawat"],
+      Kerala: ["Kottayam", "Alappuzha", "Pathanamthitta", "Thiruvananthapuram"],
+      Karnataka: ["Mysore", "Chitradurga", "Ballari", "Bidar"]
+    };
+  
+    window.onload = function() {
+      for (let country in countryStateData) {
+        countrySelect.options[countrySelect.options.length] = new Option(
+          country,
+          country
+        );
+      }
+  
+      countrySelect.onchange = function() {
+        stateSelect.disabled = false;
+        stateSelect.length = 1;
+  
+        const selectedCountry = this.value;
+        const states = countryStateData[selectedCountry];
+  
+        for (let state of states) {
+          stateSelect.options[stateSelect.options.length] = new Option(state, state);
+        }
+      };
+    };
+  
+    document.getElementById("address").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent form submission
+  
+      // Check if all required fields are filled
+      var firstName = document.getElementById("firstName").value;
+      var lastName = document.getElementById("lastName").value;
+      var mobileNo = document.getElementById("name-input").value;
+      var alternateNo = document.getElementById("name-input-alt").value;
+      var pincode = document.getElementById("name-input-pin").value;
+      var address = document.getElementById("suggestions").value;
+  
+      if (
+        firstName !== "" ||
+        lastName !== "" ||
+        mobileNo !== "" ||
+        alternateNo !== "" ||
+        pincode !== "" ||
+        address !== ""
+      ) {
+        const submitButton = document.querySelector(".btn");
+        const two = document.querySelector(".two");
+
+      submitButton.onclick = function() {
+      two.classList.add("active");
+      };
+      }
+    
+
+    const confirmButton = document.getElementById("confirmButton");
+    const paymentPage = document.getElementById("payment");
+
+    confirmButton.addEventListener("click", function(event) {
+      event.preventDefault(); // Prevent the form submission
+
+      // Scroll to the payment page
+      paymentPage.scrollIntoView({ behavior: "smooth" });
+    });
+  });
+
+var selectedOption = false;
+var paymentOptions = document.getElementsByClassName('paymentOption');
+var paymentButton = document.getElementById('payment-button');
+
+// Add event listener to each payment option radio button
+for (var i = 0; i < paymentOptions.length; i++) {
+  paymentOptions[i].addEventListener('click', function() {
+    selectedOption = this.value;
+  });
+}
+
+// Add event listener to the payment button
+paymentButton.addEventListener('click', function() {
+  if (!selectedOption) {
+    alert('Please select a payment option');
+  } else {
+    var paymentStep = document.querySelector('.progress.three');
+    paymentStep.classList.add('active');
+  }
+});
+
+var orderButton = document.getElementById('order-button');
+orderButton.addEventListener('click', function() {
+  var selectedOption = document.querySelector('.paymentOption:checked');
+  
+  if (!selectedOption) {
+    alert('Please select a payment option');
+  } else {
+    var paymentStep = document.querySelector('.progress.four');
+    paymentStep.classList.add('active');
+  }
+});
+
+// function placeOrder() {
+//   // Hide the total checking page
+//   var totalCheckingPage = document.getElementById("totalCheckingPage");
+//   totalCheckingPage.style.display = "none";
+
+//   // Show the order confirmation section
+//   var orderConfirmationSection = document.getElementById("orderConfirmationSection");
+//   orderConfirmationSection.style.display = "block";
+
+//   // Redirect to the cart page
+// window.location.href = "index.html";
+// }
+ 
+// Get the order confirmation section element
+  const orderConfirmationSection = document.getElementById("orderConfirmationSection");
+
+  // Get the place order button element
+  const placeOrderButton = document.getElementById("placeOrderButton");
+
+  // Add click event listener to the place order button
+  placeOrderButton.addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+  var totalCheckingPage = document.getElementById("totalCheckingPage");
+  totalCheckingPage.style.display = "none";
+
+  // Show the order confirmation section
+  orderConfirmationSection.style.display = "block";
+  
+  });
+
+  function resetCartPage() {
+  // Clear session storage 
+  sessionStorage.removeItem('cart');
+  
+  // Redirect to the cart.html page
+  window.location.href = 'cart.html';
+}
+</script>
+</body>
+</html>
